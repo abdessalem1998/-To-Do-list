@@ -1,0 +1,23 @@
+{
+  "name": "-to-do-list",
+  "version": "1.0.0",
+  "description": "Added later",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdessalem1998/-To-Do-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdessalem1998/-To-Do-list/issues"
+  },
+  "homepage": "https://github.com/abdessalem1998/-To-Do-list#readme",
+  "devDependencies": {
+    "hint": "^6.1.9"
+  }
+}

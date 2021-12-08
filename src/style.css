@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f2f5;
+}
+
+.hide {
+  display: none;
+}
+
+.app {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 25px auto;
+  margin-top: 10%;
+  box-shadow: 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.app-title {
+  padding: 15px 15px 15px 15px;
+  border-bottom-style: solid;
+  border-bottom-color: #dcdcdc;
+  border-bottom-width: 1px;
+}
+
+.app-input {
+  padding: 15px 15px 15px 15px;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+}
+
+.item {
+  padding: 15px 15px 15px 15px;
+  border-top-style: solid;
+  border-top-color: #dcdcdc;
+  border-top-width: 1px;
+}
+
+.checkbox {
+  margin-right: 15px;
+}
+
+.clear-btn {
+  padding: 15px 15px 15px 15px;
+  border-style: solid;
+  border-color: #dcdcdc;
+  border-width: 1px;
+}

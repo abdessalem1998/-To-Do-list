@@ -4,6 +4,10 @@ body {
   background-color: #f1f2f5;
 }
 
+.hide {
+  display: none;
+}
+
 .app {
   background-color: white;
   display: flex;

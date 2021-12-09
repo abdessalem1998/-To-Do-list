@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://abdessalem1998.github.io/-To-Do-list/)
+Coming soon
 
 ## Installation
 
@@ -41,9 +41,9 @@ You should now have the project running locally on a dev server.
 
 👤 **Houfaf Abdessalem**
 
-- GitHub: [@anuarshaidenov](https://github.com/abdessalem1998)
-- Twitter: [@anuarnyi](https://twitter.com/anuarnyi)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/houfaf-abdssalem-4682a3194/)
+- GitHub: [@Houfaf Abdessalem](https://github.com/abdessalem1998)
+- Twitter: [@Houfaf Abdessalem](https://twitter.com/anuarnyi)
+- LinkedIn: [@Houfaf Abdessalem](https://www.linkedin.com/in/houfaf-abdssalem-4682a3194/)
 
 ## 🤝 Contributing
 

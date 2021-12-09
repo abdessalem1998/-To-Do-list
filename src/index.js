@@ -1,4 +1,7 @@
 import './style.css';
+import { updateStatus } from './extra.js';
+
+alert(updateStatus(true));
 
 const tasks = [
   {

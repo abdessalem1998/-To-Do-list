@@ -41,9 +41,15 @@ You should now have the project running locally on a dev server.
 
 👤 **Houfaf Abdessalem**
 
+<<<<<<< interactive-list
+- GitHub: [@Houfaf Abdessalem](https://github.com/abdessalem1998)
+- Twitter: [@Houfaf Abdessalem](https://twitter.com/anuarnyi)
+- LinkedIn: [@Houfaf Abdessalem](https://www.linkedin.com/in/houfaf-abdssalem-4682a3194/)
+=======
 - GitHub: [@Dib](https://github.com/abdessalem1998)
 - Twitter: [@Dib](https://twitter.com/anuarnyi)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/houfaf-abdssalem-4682a3194/)
+>>>>>>> main
 
 ## 🤝 Contributing
 

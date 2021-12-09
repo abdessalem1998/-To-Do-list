@@ -1,8 +1,5 @@
 import './style.css';
-import { changeStatus,updateStatus,updateDom } from './extra.js';
-
-
-
+import { updateStatus, updateDom } from './extra.js';
 
 let tasks = [
   {
@@ -22,15 +19,11 @@ let tasks = [
   },
 ];
 
-
-if (JSON.parse(localStorage.getItem('tasks')) != null){
+if (JSON.parse(localStorage.getItem('tasks')) != null) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
-}else{
+} else {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
-
-
-
 
 // sort the array of tasks from small index to biger
 const sortArray = (array) => {
@@ -75,7 +68,7 @@ const displayList = (arr) => {
     checkbox.classList.add('checkbox');
     checkbox.type = 'checkbox';
     checkbox.id = `check${arr[i].index}`;
-    checkbox.addEventListener( 'change', function() {
+    checkbox.addEventListener('change', () => {
       updateStatus(arr[i]);
       localStorage.setItem('tasks', JSON.stringify(tasks));
     });

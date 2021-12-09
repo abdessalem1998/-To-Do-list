@@ -1,9 +1,10 @@
 import './style.css';
-import { updateStatus } from './extra.js';
+import { changeStatus,updateStatus,updateDom } from './extra.js';
 
-alert(updateStatus(true));
 
-const tasks = [
+
+
+let tasks = [
   {
     description: 'task 1 description',
     completed: true,
@@ -11,7 +12,7 @@ const tasks = [
   },
   {
     description: 'task 2 description',
-    completed: false,
+    completed: true,
     index: 0,
   },
   {
@@ -20,6 +21,16 @@ const tasks = [
     index: 1,
   },
 ];
+
+
+if (JSON.parse(localStorage.getItem('tasks')) != null){
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+}else{
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+
+
 
 // sort the array of tasks from small index to biger
 const sortArray = (array) => {
@@ -63,15 +74,23 @@ const displayList = (arr) => {
     const checkbox = document.createElement('input');
     checkbox.classList.add('checkbox');
     checkbox.type = 'checkbox';
+    checkbox.id = `check${arr[i].index}`;
+    checkbox.addEventListener( 'change', function() {
+      updateStatus(arr[i]);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    });
+
     element.appendChild(checkbox);
 
     const taskName = document.createElement('span');
     taskName.innerHTML = `${arr[i].description}`;
+    taskName.id = `checkbox${arr[i].index}`;
     element.appendChild(taskName);
 
     element.classList.add('item');
     task.appendChild(element);
   }
+  updateDom(tasks);
 
   // clear btn
   const clear = document.createElement('button');

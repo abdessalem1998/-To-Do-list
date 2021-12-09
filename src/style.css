@@ -49,3 +49,7 @@ body {
   border-color: #dcdcdc;
   border-width: 1px;
 }
+
+.task-done {
+  text-decoration: line-through;
+}

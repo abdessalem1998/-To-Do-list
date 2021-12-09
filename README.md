@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://abdessalem1998.github.io/-To-Do-list/)
+Coming soon
 
 ## Installation
 

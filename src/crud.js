@@ -12,9 +12,17 @@ export const displayRemoveBtn = (index,tasks) => {
   if (!taskName.classList.contains('clicked')) {
     taskName.classList.add('clicked');
     const remove = document.createElement('button');
+
+    //for updating
+    const taskEdit = document.createElement('input');
+    taskEdit.id = `taskEdit${index}`;
+    taskEdit.value =taskName.innerHTML;
+    //for updating
+    element.removeChild(taskName);
     remove.id = `remove${index}`;
     remove.innerHTML='-';
     element.appendChild(remove);
+    element.appendChild(taskEdit);
     remove.classList.add('delete');
   }else {
     taskName.classList.remove('clicked');
@@ -35,3 +43,8 @@ export const remove = (index,tasks) => {
 export function checkCompleted(task) {
   return !task.completed;
 }
+
+export const update = (index,editvalue,tasks) => {
+  tasks[index].description=editvalue.value;
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+};

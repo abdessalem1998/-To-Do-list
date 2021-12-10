@@ -1,6 +1,6 @@
 import './style.css';
 import { sortArray, updateStatus, updateDom } from './extra.js';
-import { add,displayRemoveBtn,remove,checkCompleted } from './crud.js';
+import { add,displayRemoveBtn,remove,checkCompleted,update } from './crud.js';
 
 //array of tasks
 let tasks = [];
@@ -75,7 +75,14 @@ const displayList = (arr) => {
         remove(arr[i].index,tasks);
         document.getElementById('list').innerHTML='';
         document.body.appendChild(displayList(tasks));
-
+      });
+      const taskEdit = document.getElementById(`taskEdit${arr[i].index}`);
+      taskEdit.addEventListener('click', () => {
+        taskEdit.addEventListener('click', () => {
+          update(arr[i].index,taskEdit,tasks);
+          document.getElementById('list').innerHTML='';
+          document.body.appendChild(displayList(tasks));
+        });
       });
 
     });

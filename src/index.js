@@ -40,13 +40,14 @@ const sortArray = (array) => {
   return array;
 };
 
+const task = document.getElementById('list');
 // display tasks
 const displayList = (arr) => {
   // sort the arry before display it
   sortArray(tasks);
 
   // style the app container
-  const task = document.getElementById('list');
+
   task.classList.add('app');
 
   // title of the app
@@ -56,10 +57,18 @@ const displayList = (arr) => {
   task.appendChild(title);
 
   // input of the app
+  const inputDiv = document.createElement('div');
+
   const input = document.createElement('input');
   input.classList.add('app-input');
   input.placeholder = 'add your list...';
-  task.appendChild(input);
+
+  const inputBtn = document.createElement('button');
+  inputBtn.innerHTML='+';
+
+  inputDiv.appendChild(input);
+  inputDiv.appendChild(inputBtn);
+  task.appendChild(inputDiv);
 
   // Add the tasks
   for (let i = 0; i < arr.length; i += 1) {

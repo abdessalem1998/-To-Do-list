@@ -1,5 +1,5 @@
 import './style.css';
-import { updateStatus, updateDom } from './extra.js';
+import { sortArray, updateStatus, updateDom } from './extra.js';
 import { add,displayRemoveBtn,remove } from './crud.js';
 
 let tasks = [];
@@ -12,20 +12,7 @@ if (JSON.parse(localStorage.getItem('tasks')) != null) {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-// sort the array of tasks from small index to biger
-const sortArray = (array) => {
-  let temp = 0;
-  for (let i = 0; i < array.length; i += 1) {
-    for (let j = i; j < array.length; j += 1) {
-      if (array[j].index < array[i].index) {
-        temp = array[j];
-        array[j] = array[i];
-        array[i] = temp;
-      }
-    }
-  }
-  return array;
-};
+
 
 const task = document.getElementById('list');
 // display tasks

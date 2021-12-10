@@ -23,3 +23,17 @@ export const updateDom = (tasks) => {
     }
   }
 };
+
+export const sortArray = (array) => {
+  let temp = 0;
+  for (let i = 0; i < array.length; i += 1) {
+    for (let j = i; j < array.length; j += 1) {
+      if (array[j].index < array[i].index) {
+        temp = array[j];
+        array[j] = array[i];
+        array[i] = temp;
+      }
+    }
+  }
+  return array;
+};

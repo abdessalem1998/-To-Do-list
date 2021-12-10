@@ -1,7 +1,7 @@
 export const add = (tasks) => {
   let taskValue =document.getElementById('app-input').value;
   if (taskValue != '') {
-    tasks.push({description:`${taskValue}`,completed: true,index: tasks.length});
+    tasks.push({description:`${taskValue}`,completed: false,index: tasks.length});
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 };
@@ -31,3 +31,7 @@ export const remove = (index,tasks) => {
   }
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
+
+export function checkCompleted(task) {
+  return !task.completed;
+}

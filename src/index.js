@@ -1,27 +1,27 @@
 import './style.css';
 import { sortArray, updateStatus, updateDom } from './extra.js';
-import { add,displayRemoveBtn,remove } from './crud.js';
+import { add,displayRemoveBtn,remove,checkCompleted } from './crud.js';
 
+//array of tasks
 let tasks = [];
 
-
-
+//Set up localStorage
 if (JSON.parse(localStorage.getItem('tasks')) != null) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
 } else {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-
-
+//render element
 const task = document.getElementById('list');
+
 // display tasks
 const displayList = (arr) => {
+
   // sort the arry before display it
   sortArray(tasks);
 
   // style the app container
-
   task.classList.add('app');
 
   // title of the app
@@ -32,7 +32,6 @@ const displayList = (arr) => {
 
   // input of the app
   const inputDiv = document.createElement('div');
-
   const input = document.createElement('input');
   input.classList.add('app-input');
   input.id = 'app-input';
@@ -50,7 +49,7 @@ const displayList = (arr) => {
   inputDiv.appendChild(inputBtn);
   task.appendChild(inputDiv);
 
-  // Add the tasks
+  // display the tasks
   for (let i = 0; i < arr.length; i += 1) {
     const element = document.createElement('div');
     element.id = `task${arr[i].index}`;
@@ -92,7 +91,10 @@ const displayList = (arr) => {
   clear.innerHTML = 'Clear all completed';
   clear.classList.add('clear-btn');
   clear.addEventListener('click', () => {
-    alert('hi');
+    tasks = tasks.filter(checkCompleted);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    document.getElementById('list').innerHTML='';
+    document.body.appendChild(displayList(tasks));
   });
   task.appendChild(clear);
   return task;

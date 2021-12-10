@@ -2,24 +2,7 @@ import './style.css';
 import { updateStatus, updateDom } from './extra.js';
 import { add } from './crud.js';
 
-let tasks = [
-  {
-    description: 'task 1 description',
-    completed: true,
-    index: 2,
-  },
-  {
-    description: 'task 2 description',
-    completed: true,
-    index: 0,
-  },
-  {
-    description: 'task 3 description',
-    completed: true,
-    index: 1,
-  },
-];
-
+let tasks = [];
 
 
 if (JSON.parse(localStorage.getItem('tasks')) != null) {
@@ -27,6 +10,29 @@ if (JSON.parse(localStorage.getItem('tasks')) != null) {
 } else {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
+
+const remove = (index) => {
+  const element = document.getElementById(`task${index}`);
+  const taskName = document.getElementById(`checkbox${index}`);
+  if (!taskName.classList.contains('clicked')) {
+    taskName.classList.add('clicked');
+    const remove = document.createElement('button');
+    remove.id = `remove${index}`;
+    remove.innerHTML='-';
+    remove.addEventListener('click', () => {
+      tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      document.getElementById('list').innerHTML='';
+      document.body.appendChild(displayList(tasks));
+    });
+    element.appendChild(remove);
+    remove.classList.add('delete');
+  }else {
+    taskName.classList.remove('clicked');
+    const remove = document.getElementById(`remove${index}`);
+    element.removeChild(remove);
+  }
+};
 
 
 // sort the array of tasks from small index to biger
@@ -83,6 +89,8 @@ const displayList = (arr) => {
   // Add the tasks
   for (let i = 0; i < arr.length; i += 1) {
     const element = document.createElement('div');
+    element.id = `task${arr[i].index}`;
+
     const checkbox = document.createElement('input');
     checkbox.classList.add('checkbox');
     checkbox.type = 'checkbox';
@@ -97,6 +105,10 @@ const displayList = (arr) => {
     const taskName = document.createElement('span');
     taskName.innerHTML = `${arr[i].description}`;
     taskName.id = `checkbox${arr[i].index}`;
+    taskName.addEventListener('click', () => {
+      remove(arr[i].index);
+    });
+
     element.appendChild(taskName);
 
     element.classList.add('item');
@@ -108,6 +120,9 @@ const displayList = (arr) => {
   const clear = document.createElement('button');
   clear.innerHTML = 'Clear all completed';
   clear.classList.add('clear-btn');
+  clear.addEventListener('click', () => {
+    alert('hi');
+  });
   task.appendChild(clear);
   return task;
 };

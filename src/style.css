@@ -54,3 +54,12 @@ body {
 .task-done {
   text-decoration: line-through;
 }
+
+.delete {
+  position: absolute;
+  left: 72%;
+}
+
+.clicked {
+  background-color: yellow;
+}

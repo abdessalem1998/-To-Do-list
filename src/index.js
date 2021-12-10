@@ -1,5 +1,6 @@
 import './style.css';
 import { updateStatus, updateDom } from './extra.js';
+import { add } from './crud.js';
 
 let tasks = [
   {
@@ -19,11 +20,14 @@ let tasks = [
   },
 ];
 
+
+
 if (JSON.parse(localStorage.getItem('tasks')) != null) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
 } else {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
+
 
 // sort the array of tasks from small index to biger
 const sortArray = (array) => {
@@ -61,10 +65,16 @@ const displayList = (arr) => {
 
   const input = document.createElement('input');
   input.classList.add('app-input');
+  input.id = 'app-input';
   input.placeholder = 'add your list...';
 
   const inputBtn = document.createElement('button');
   inputBtn.innerHTML='+';
+  inputBtn.addEventListener('click', () => {
+    add(tasks);
+    document.getElementById('list').innerHTML='';
+    document.body.appendChild(displayList(tasks));
+  });
 
   inputDiv.appendChild(input);
   inputDiv.appendChild(inputBtn);

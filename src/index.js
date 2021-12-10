@@ -1,8 +1,9 @@
 import './style.css';
 import { updateStatus, updateDom } from './extra.js';
-import { add } from './crud.js';
+import { add,displayRemoveBtn,remove } from './crud.js';
 
 let tasks = [];
+
 
 
 if (JSON.parse(localStorage.getItem('tasks')) != null) {
@@ -10,30 +11,6 @@ if (JSON.parse(localStorage.getItem('tasks')) != null) {
 } else {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
-
-const remove = (index) => {
-  const element = document.getElementById(`task${index}`);
-  const taskName = document.getElementById(`checkbox${index}`);
-  if (!taskName.classList.contains('clicked')) {
-    taskName.classList.add('clicked');
-    const remove = document.createElement('button');
-    remove.id = `remove${index}`;
-    remove.innerHTML='-';
-    remove.addEventListener('click', () => {
-      tasks.splice(index, 1);
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-      document.getElementById('list').innerHTML='';
-      document.body.appendChild(displayList(tasks));
-    });
-    element.appendChild(remove);
-    remove.classList.add('delete');
-  }else {
-    taskName.classList.remove('clicked');
-    const remove = document.getElementById(`remove${index}`);
-    element.removeChild(remove);
-  }
-};
-
 
 // sort the array of tasks from small index to biger
 const sortArray = (array) => {
@@ -106,9 +83,16 @@ const displayList = (arr) => {
     taskName.innerHTML = `${arr[i].description}`;
     taskName.id = `checkbox${arr[i].index}`;
     taskName.addEventListener('click', () => {
-      remove(arr[i].index);
-    });
+      displayRemoveBtn(arr[i].index,tasks);
+      const removeBtn = document.getElementById(`remove${arr[i].index}`);
+      removeBtn.addEventListener('click', () => {
+        remove(arr[i].index,tasks);
+        document.getElementById('list').innerHTML='';
+        document.body.appendChild(displayList(tasks));
 
+      });
+
+    });
     element.appendChild(taskName);
 
     element.classList.add('item');
@@ -127,4 +111,5 @@ const displayList = (arr) => {
   return task;
 };
 
+document.getElementById('list').innerHTML='';
 document.body.appendChild(displayList(tasks));

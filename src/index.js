@@ -41,8 +41,7 @@ const displayList = (arr) => {
   inputBtn.innerHTML='+';
   inputBtn.addEventListener('click', () => {
     add(tasks);
-    document.getElementById('list').innerHTML='';
-    document.body.appendChild(displayList(tasks));
+    dom();
   });
 
   inputDiv.appendChild(input);
@@ -73,15 +72,13 @@ const displayList = (arr) => {
       const removeBtn = document.getElementById(`remove${arr[i].index}`);
       removeBtn.addEventListener('click', () => {
         remove(arr[i].index,tasks);
-        document.getElementById('list').innerHTML='';
-        document.body.appendChild(displayList(tasks));
+        dom();
       });
       const taskEdit = document.getElementById(`taskEdit${arr[i].index}`);
       taskEdit.addEventListener('click', () => {
         taskEdit.addEventListener('click', () => {
           update(arr[i].index,taskEdit,tasks);
-          document.getElementById('list').innerHTML='';
-          document.body.appendChild(displayList(tasks));
+          dom();
         });
       });
 
@@ -99,13 +96,19 @@ const displayList = (arr) => {
   clear.classList.add('clear-btn');
   clear.addEventListener('click', () => {
     tasks = tasks.filter(checkCompleted);
+    //re-indexing
+    for (let i = 0; i < tasks.length; i++) {
+      tasks[i].index=i;
+    }
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    document.getElementById('list').innerHTML='';
-    document.body.appendChild(displayList(tasks));
+    dom();
   });
   task.appendChild(clear);
   return task;
 };
 
-document.getElementById('list').innerHTML='';
-document.body.appendChild(displayList(tasks));
+const dom = () => {
+  document.getElementById('list').innerHTML='';
+  document.body.appendChild(displayList(tasks));
+};
+dom();

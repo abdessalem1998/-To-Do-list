@@ -63,3 +63,12 @@ body {
 .clicked {
   background-color: yellow;
 }
+
+.task-name {
+  display: inline-block;
+  width: 90%;
+}
+
+.edit {
+  width: 90%;
+}

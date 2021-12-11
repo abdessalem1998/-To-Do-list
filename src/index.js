@@ -67,6 +67,7 @@ const displayList = (arr) => {
     const taskName = document.createElement('span');
     taskName.innerHTML = `${arr[i].description}`;
     taskName.id = `checkbox${arr[i].index}`;
+    taskName.classList.add('task-name');
     taskName.addEventListener('click', () => {
       displayRemoveBtn(arr[i].index,tasks);
       const removeBtn = document.getElementById(`remove${arr[i].index}`);
@@ -75,6 +76,7 @@ const displayList = (arr) => {
         dom();
       });
       const taskEdit = document.getElementById(`taskEdit${arr[i].index}`);
+      taskEdit.classList.add('edit');
       taskEdit.addEventListener('click', () => {
         taskEdit.addEventListener('click', () => {
           update(arr[i].index,taskEdit,tasks);

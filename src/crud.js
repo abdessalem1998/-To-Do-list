@@ -24,10 +24,6 @@ export const displayRemoveBtn = (index,tasks) => {
     element.appendChild(remove);
     element.appendChild(taskEdit);
     remove.classList.add('delete');
-  }else {
-    taskName.classList.remove('clicked');
-    const remove = document.getElementById(`remove${index}`);
-    element.removeChild(remove);
   }
 };
 

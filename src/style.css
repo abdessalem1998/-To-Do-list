@@ -30,6 +30,7 @@ body {
   border-style: solid;
   border-color: white;
   border-width: 1px;
+  width: 90%;
 }
 
 .item {
@@ -52,4 +53,22 @@ body {
 
 .task-done {
   text-decoration: line-through;
+}
+
+.delete {
+  position: absolute;
+  left: 72%;
+}
+
+.clicked {
+  background-color: yellow;
+}
+
+.task-name {
+  display: inline-block;
+  width: 90%;
+}
+
+.edit {
+  width: 90%;
 }

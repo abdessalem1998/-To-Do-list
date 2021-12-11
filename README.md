@@ -2,7 +2,8 @@
 
 > "To-do list" is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete.
 
-<img width="585" alt="todo" src="https://user-images.githubusercontent.com/89970442/145414642-c61e612c-3dcb-4fa6-8697-fb0ab4017fe3.PNG">
+<img width="597" alt="todo" src="https://user-images.githubusercontent.com/89970442/145659569-130e9cac-b897-4d99-b350-93c147dbad9a.PNG">
+<img width="597" alt="todo" src="https://user-images.githubusercontent.com/89970442/145659601-63439ad9-1b94-40de-8c10-d8a771d65a63.PNG">
 
 ## Built With
 
@@ -11,10 +12,6 @@
 - SCSS
 - WebPack
 - npm
-
-## Live Demo
-
-Coming soon
 
 ## Installation
 

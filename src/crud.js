@@ -11,6 +11,7 @@ export const displayRemoveBtn = (index) => {
   const taskName = document.getElementById(`checkbox${index}`);
   if (!taskName.classList.contains('clicked')) {
     taskName.classList.add('clicked');
+    element.classList.add('clicked')
     const remove = document.createElement('button');
 
     // for updating

@@ -1,23 +1,24 @@
 import './style.css';
 import { sortArray, updateStatus, updateDom } from './extra.js';
-import { add,displayRemoveBtn,remove,checkCompleted,update } from './crud.js';
+import {
+  add, displayRemoveBtn, remove, checkCompleted, update,
+} from './crud.js';
 
-//array of tasks
+// array of tasks
 let tasks = [];
 
-//Set up localStorage
+// Set up localStorage
 if (JSON.parse(localStorage.getItem('tasks')) != null) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
 } else {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-//render element
+// render element
 const task = document.getElementById('list');
 
 // display tasks
 const displayList = (arr) => {
-
   // sort the arry before display it
   sortArray(tasks);
 
@@ -38,10 +39,11 @@ const displayList = (arr) => {
   input.placeholder = 'add your list...';
 
   const inputBtn = document.createElement('button');
-  inputBtn.innerHTML='+';
+  inputBtn.innerHTML = '+';
   inputBtn.addEventListener('click', () => {
     add(tasks);
-    dom();
+    document.getElementById('list').innerHTML = '';
+    document.body.appendChild(displayList(tasks));
   });
 
   inputDiv.appendChild(input);
@@ -59,7 +61,7 @@ const displayList = (arr) => {
     checkbox.id = `check${arr[i].index}`;
     checkbox.addEventListener('change', () => {
       updateStatus(arr[i]);
-      localStorage.setItem('tasks', JSON.stringify(tasks));
+      localStorage.setItem('tasks', JSON.stringify(arr));
     });
 
     element.appendChild(checkbox);
@@ -69,21 +71,22 @@ const displayList = (arr) => {
     taskName.id = `checkbox${arr[i].index}`;
     taskName.classList.add('task-name');
     taskName.addEventListener('click', () => {
-      displayRemoveBtn(arr[i].index,tasks);
+      displayRemoveBtn(arr[i].index, arr);
       const removeBtn = document.getElementById(`remove${arr[i].index}`);
       removeBtn.addEventListener('click', () => {
-        remove(arr[i].index,tasks);
-        dom();
+        remove(arr[i].index, arr);
+        document.getElementById('list').innerHTML = '';
+        document.body.appendChild(displayList(arr));
       });
       const taskEdit = document.getElementById(`taskEdit${arr[i].index}`);
       taskEdit.classList.add('edit');
       taskEdit.addEventListener('click', () => {
         taskEdit.addEventListener('click', () => {
-          update(arr[i].index,taskEdit,tasks);
-          dom();
+          update(arr[i].index, taskEdit, arr);
+          document.getElementById('list').innerHTML = '';
+          document.body.appendChild(displayList(arr));
         });
       });
-
     });
     element.appendChild(taskName);
 
@@ -98,19 +101,17 @@ const displayList = (arr) => {
   clear.classList.add('clear-btn');
   clear.addEventListener('click', () => {
     tasks = tasks.filter(checkCompleted);
-    //re-indexing
-    for (let i = 0; i < tasks.length; i++) {
-      tasks[i].index=i;
+    // re-indexing
+    for (let i = 0; i < tasks.length; i += 1) {
+      tasks[i].index = i;
     }
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    dom();
+    document.getElementById('list').innerHTML = '';
+    document.body.appendChild(displayList(tasks));
   });
   task.appendChild(clear);
   return task;
 };
 
-const dom = () => {
-  document.getElementById('list').innerHTML='';
-  document.body.appendChild(displayList(tasks));
-};
-dom();
+document.getElementById('list').innerHTML = '';
+document.body.appendChild(displayList(tasks));

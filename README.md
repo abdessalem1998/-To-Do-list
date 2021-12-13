@@ -9,9 +9,11 @@
 
 - JavaScript
 - HTML
-- SCSS
 - WebPack
-- npm
+
+## Live Demo
+
+- [Live Demo](https://abdessalem1998.github.io/-To-Do-list/dist/)
 
 ## Installation
 

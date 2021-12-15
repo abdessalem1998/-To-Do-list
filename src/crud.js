@@ -1,8 +1,10 @@
-export const add = (tasks) => {
-  const taskValue = document.getElementById('app-input').value;
+import localStorageMock from './__mocks__/localStorageMocks.js';
+
+export const add = (tasks,taskValue) => {
+  
   if (taskValue !== '') {
     tasks.push({ description: `${taskValue}`, completed: false, index: tasks.length });
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorageMock.setItem('tasks', JSON.stringify(tasks));
   }
 };
 
@@ -34,7 +36,7 @@ export const remove = (index, tasks) => {
   for (let i = 0; i < tasks.length; i += 1) {
     tasks[i].index = i;
   }
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+  localStorageMock.setItem('tasks', JSON.stringify(tasks));
 };
 
 export function checkCompleted(task) {

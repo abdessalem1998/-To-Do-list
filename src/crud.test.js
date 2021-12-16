@@ -1,4 +1,6 @@
-import { add, remove, checkCompleted, update } from './crud';
+import {
+  add, remove, checkCompleted, update,
+} from './crud';
 import { changeStatus } from './extra';
 
 describe('Testing add and remove function', () => {
@@ -53,7 +55,7 @@ describe('Testing add and remove function', () => {
 describe('Testing Status and content update', () => {
   test('test "Clear all completed" function case not completed', () => {
     // Arrange
-    const task = [{completed:false}] ;
+    const task = [{ completed: false }];
 
     // Act
     const result = checkCompleted(task);
@@ -64,7 +66,7 @@ describe('Testing Status and content update', () => {
 
   test('test "Clear all completed" function case completed', () => {
     // Arrange
-    const task = [{completed:true}] ;
+    const task = [{ completed: true }];
 
     // Act
     const result = checkCompleted(task);
@@ -73,42 +75,42 @@ describe('Testing Status and content update', () => {
     expect(result).toBe(true);
   });
 
-  test("test if the toDo task is editable", ()=>{
-      //Arrange
-      const tasks = [{
-          description: 'task 1 description',
-          completed: true,
-          index: 0,
-        }];
+  test('test if the toDo task is editable', () => {
+    // Arrange
+    const tasks = [{
+      description: 'task 1 description',
+      completed: true,
+      index: 0,
+    }];
 
-        let updateValue = "Change task 1 description";
+    const updateValue = 'Change task 1 description';
 
-        //Act
-        update(0,updateValue,tasks);
+    // Act
+    update(0, updateValue, tasks);
 
-        //Assert
-        expect(tasks[0].description).toBe(updateValue);
+    // Assert
+    expect(tasks[0].description).toBe(updateValue);
   });
 
-  test("test changeStatus case true", ()=>{
-        //Arrange
-        const status = true;
+  test('test changeStatus case true', () => {
+    // Arrange
+    const status = true;
 
-        //Act
-        const newStatus = changeStatus(status);
+    // Act
+    const newStatus = changeStatus(status);
 
-        //Assert
-        expect(newStatus).toBe(false);
+    // Assert
+    expect(newStatus).toBe(false);
   });
 
-  test("test changeStatus case false", ()=>{
-        //Arrange
-        const status = false;
+  test('test changeStatus case false', () => {
+    // Arrange
+    const status = false;
 
-        //Act
-        const newStatus = changeStatus(status);
+    // Act
+    const newStatus = changeStatus(status);
 
-        //Assert
-        expect(newStatus).toBe(true);
+    // Assert
+    expect(newStatus).toBe(true);
   });
 });

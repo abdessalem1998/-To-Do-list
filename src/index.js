@@ -43,7 +43,7 @@ const displayList = (arr) => {
   inputBtn.innerHTML = '+';
   inputBtn.addEventListener('click', () => {
     const taskValue = document.getElementById('app-input').value;
-    add(tasks,taskValue);
+    add(tasks, taskValue);
     document.getElementById('list').innerHTML = '';
     document.body.appendChild(displayList(tasks));
   });

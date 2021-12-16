@@ -1,4 +1,5 @@
 import { add, remove, checkCompleted, update } from './crud';
+import { changeStatus } from './extra';
 
 describe('Testing add and remove function', () => {
   test('Test for adding task and chking the value of task', () => {
@@ -49,7 +50,7 @@ describe('Testing add and remove function', () => {
   });
 });
 
-describe('Testing ...', () => {
+describe('Testing Status and content update', () => {
   test('test "Clear all completed" function case not completed', () => {
     // Arrange
     const task = [{completed:false}] ;
@@ -73,21 +74,41 @@ describe('Testing ...', () => {
   });
 
   test("test if the toDo task is editable", ()=>{
-      //Arrange 
+      //Arrange
       const tasks = [{
           description: 'task 1 description',
           completed: true,
           index: 0,
         }];
 
-        let updateValue = "Change task 1 description"; 
-        
+        let updateValue = "Change task 1 description";
+
         //Act
         update(0,updateValue,tasks);
-        
+
         //Assert
         expect(tasks[0].description).toBe(updateValue);
   });
+
+  test("test changeStatus case true", ()=>{
+        //Arrange
+        const status = true;
+
+        //Act
+        const newStatus = changeStatus(status);
+
+        //Assert
+        expect(newStatus).toBe(false);
+  });
+
+  test("test changeStatus case false", ()=>{
+        //Arrange
+        const status = false;
+
+        //Act
+        const newStatus = changeStatus(status);
+
+        //Assert
+        expect(newStatus).toBe(true);
+  });
 });
-
-

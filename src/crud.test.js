@@ -1,4 +1,4 @@
-import { add, remove, checkCompleted } from './crud';
+import { add, remove, checkCompleted, update } from './crud';
 
 describe('Testing add and remove function', () => {
   test('Test for adding task and chking the value of task', () => {
@@ -71,4 +71,23 @@ describe('Testing ...', () => {
     // Assert
     expect(result).toBe(true);
   });
+
+  test("test if the toDo task is editable", ()=>{
+      //Arrange 
+      const tasks = [{
+          description: 'task 1 description',
+          completed: true,
+          index: 0,
+        }];
+
+        let updateValue = "Change task 1 description"; 
+        
+        //Act
+        update(0,updateValue,tasks);
+        
+        //Assert
+        expect(tasks[0].description).toBe(updateValue);
+  });
 });
+
+

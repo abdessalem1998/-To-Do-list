@@ -84,7 +84,7 @@ const displayList = (arr) => {
       taskEdit.classList.add('edit');
       taskEdit.addEventListener('click', () => {
         taskEdit.addEventListener('click', () => {
-          update(arr[i].index, taskEdit, arr);
+          update(arr[i].index, taskEdit.value, arr);
           document.getElementById('list').innerHTML = '';
           document.body.appendChild(displayList(arr));
         });

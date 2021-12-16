@@ -44,6 +44,7 @@ export function checkCompleted(task) {
 }
 
 export const update = (index, editvalue, tasks) => {
-  tasks[index].description = editvalue.value;
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+  tasks[index].description = editvalue;
+  // localStorage.setItem('tasks', JSON.stringify(tasks));
+  localStorageMock.setItem('tasks', JSON.stringify(tasks));
 };

@@ -39,9 +39,10 @@ const displayList = (arr) => {
   input.placeholder = 'add your list...';
 
   const inputBtn = document.createElement('button');
-  const taskValue = document.getElementById('app-input').value;
+
   inputBtn.innerHTML = '+';
   inputBtn.addEventListener('click', () => {
+    const taskValue = document.getElementById('app-input').value;
     add(tasks,taskValue);
     document.getElementById('list').innerHTML = '';
     document.body.appendChild(displayList(tasks));

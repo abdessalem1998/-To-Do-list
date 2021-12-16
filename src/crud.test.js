@@ -1,17 +1,52 @@
 import {add,remove} from './crud';
 
 describe( 'Testing add and remove function',() =>{
-    let arr = [];
-    let taskString = "test";
 
-    test("Test for adding task", ()=>{
+    test("Test for adding task and chking the value of task", ()=>{
+      //Arrange
+      let arr = [];
+      let taskString = "test";
+
+      //Act
       add(arr,taskString);
-      expect(arr).toHaveLength(1);
+
+      //Assert
       expect(arr[0].description).toBe('test');
     });
 
-    test("test for removing a task",()=>{
-      remove(0,arr);
+    test("Test for adding task and check length", ()=>{
+      //Arrange
+      let arr = [];
+      let taskString = "test";
+
+      //Act
+      add(arr,taskString);
+
+      //Assert
+      expect(arr).toHaveLength(1);
+    });
+
+    test("Test for adding empty task and check length", ()=>{
+      //Arrange
+      let arr = [];
+      let taskString = "";
+
+      //Act
+      add(arr,taskString);
+
+      //Assert
       expect(arr).toHaveLength(0);
     });
-}); 
+
+    test("test for removing a task",()=>{
+      //Arrange
+      let arr = [];
+      let taskString = "test";
+
+      //Act
+      remove(0,arr);
+
+      //Assert
+      expect(arr).toHaveLength(0);
+    });
+});

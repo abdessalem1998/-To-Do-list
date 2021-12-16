@@ -1,10 +1,11 @@
 import localStorageMock from './__mocks__/localStorageMocks.js';
 
 export const add = (tasks,taskValue) => {
-  
+
   if (taskValue !== '') {
     tasks.push({ description: `${taskValue}`, completed: false, index: tasks.length });
     localStorageMock.setItem('tasks', JSON.stringify(tasks));
+    //localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 };
 
